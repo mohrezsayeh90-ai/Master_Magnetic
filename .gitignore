@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+kaggle.json
+access_token
+results/custom/

@@ -1,0 +1,13 @@
+{
+  "max_error_Rv": 9.323398382465181e-05,
+  "rmse_Rv": 4.484589813932613e-05,
+  "max_error_um": 0.006992548786848886,
+  "completed": true,
+  "saturated_fraction": 0.0,
+  "accepted": true,
+  "oracle": false,
+  "flow_factor": 1.0,
+  "duration_s": 4.935606761832448,
+  "feedback_gain": 4.0,
+  "independent_open_loop_replay_max_error_Rv": 5.1207041591574964e-05
+}

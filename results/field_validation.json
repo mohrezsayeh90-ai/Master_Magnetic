@@ -1,0 +1,22 @@
+{
+  "fluid_velocity_max_error": 2.1329452062346377e-05,
+  "fluid_pressure_max_error": 1.2495577109694622e-05,
+  "magnetic_B_relative_L2": 0.0004054408297184326,
+  "magnetic_force_relative_L2": 0.0017664681478578345,
+  "channel_B_relative_L2": 0.00046223586676181523,
+  "channel_force_relative_L2": 0.0025411317469806022,
+  "channel_force_max_absolute": 0.0067726878725742345,
+  "heldout_laplace_rms": 0.004463654306645823,
+  "checks": {
+    "flow_velocity": true,
+    "flow_pressure": true,
+    "B_field": true,
+    "force_gradient": true,
+    "laplace_residual": true
+  },
+  "all_passed": true,
+  "compression": {
+    "max_force_interpolation_error": 0.0003400409704054641,
+    "all_passed": true
+  }
+}

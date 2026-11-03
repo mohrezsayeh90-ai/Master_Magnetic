@@ -1,0 +1,129 @@
+{
+  "bump": {
+    "learned_plant": {
+      "max_error_Rv": 9.323398382465181e-05,
+      "rmse_Rv": 4.484589813932613e-05,
+      "max_error_um": 0.006992548786848886,
+      "completed": true,
+      "saturated_fraction": 0.0,
+      "accepted": true,
+      "oracle": false,
+      "flow_factor": 1.0,
+      "duration_s": 4.935606761832448,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 5.1207041591574964e-05
+    },
+    "independent_closed_loop": {
+      "max_error_Rv": 8.406801261189728e-05,
+      "rmse_Rv": 3.8028507046004287e-05,
+      "max_error_um": 0.006305100945892295,
+      "completed": true,
+      "saturated_fraction": 0.0,
+      "accepted": true,
+      "oracle": true,
+      "flow_factor": 1.0,
+      "duration_s": 4.935504668604563,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 8.638056159274154e-05
+    }
+  },
+  "reverse": {
+    "learned_plant": {
+      "max_error_Rv": 0.006466407019451741,
+      "rmse_Rv": 0.002112072433179356,
+      "max_error_um": 0.4849805264588805,
+      "completed": true,
+      "saturated_fraction": 0.20758483033932135,
+      "accepted": true,
+      "oracle": false,
+      "flow_factor": 1.0,
+      "duration_s": 4.9344949677252306,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 0.006524255338564265
+    },
+    "independent_closed_loop": {
+      "max_error_Rv": 0.0075832707562939455,
+      "rmse_Rv": 0.002636558082940772,
+      "max_error_um": 0.5687453067220459,
+      "completed": true,
+      "saturated_fraction": 0.21357285429141717,
+      "accepted": true,
+      "oracle": true,
+      "flow_factor": 1.1,
+      "duration_s": 4.48575571923475,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 0.03499380567987735
+    }
+  },
+  "deflection": {
+    "learned_plant": {
+      "max_error_Rv": 0.00010478539526630193,
+      "rmse_Rv": 5.117561019439728e-05,
+      "max_error_um": 0.007858904644972645,
+      "completed": true,
+      "saturated_fraction": 0.0,
+      "accepted": true,
+      "oracle": false,
+      "flow_factor": 1.0,
+      "duration_s": 4.9454362846549875,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 7.22858282639488e-05
+    },
+    "independent_closed_loop": {
+      "max_error_Rv": 0.00010421859868221112,
+      "rmse_Rv": 4.9549704163221414e-05,
+      "max_error_um": 0.007816394901165834,
+      "completed": true,
+      "saturated_fraction": 0.0,
+      "accepted": true,
+      "oracle": true,
+      "flow_factor": 1.0,
+      "duration_s": 4.945339804535008,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 0.00010396893612649172
+    }
+  },
+  "unreachable": {
+    "learned_plant": {
+      "max_error_Rv": 0.59917170769552,
+      "rmse_Rv": 0.41051778834599234,
+      "max_error_um": 44.937878077163994,
+      "completed": true,
+      "saturated_fraction": 0.9840319361277445,
+      "accepted": false,
+      "oracle": false,
+      "flow_factor": 1.0,
+      "duration_s": 4.936070248601044,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 0.599168296782196
+    },
+    "independent_closed_loop": {
+      "max_error_Rv": 0.599168347234958,
+      "rmse_Rv": 0.4105252626606674,
+      "max_error_um": 44.93762604262185,
+      "completed": true,
+      "saturated_fraction": 0.9840319361277445,
+      "accepted": false,
+      "oracle": true,
+      "flow_factor": 1.0,
+      "duration_s": 4.935960916982723,
+      "feedback_gain": 4.0,
+      "independent_open_loop_replay_max_error_Rv": 0.5991683472349931
+    }
+  },
+  "timed_path": {
+    "max_error_Rv": 6.713027022211063e-05,
+    "rmse_Rv": 3.500495847065441e-05,
+    "max_error_um": 0.005034770266658296,
+    "completed": true,
+    "saturated_fraction": 0.0,
+    "accepted": true,
+    "oracle": false,
+    "flow_factor": 1.0,
+    "duration_s": 5.066666666666667,
+    "feedback_gain": 4.0,
+    "independent_open_loop_replay_max_error_Rv": 7.874178539107185e-05
+  },
+  "invalid_inputs_rejected": true,
+  "passed": true
+}
