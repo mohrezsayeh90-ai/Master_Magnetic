@@ -1,0 +1,12 @@
+{
+  "source_kernel": "mohrezsayeh/master8-general-magnetic-particl-2ndtry",
+  "selection": "most recently run notebook returned by Kaggle dateRun sort",
+  "source_sha256": "c9590311b33afb460e2c57091b7c5dc28efdb5b4e05d74a643c2cc01e8b97d60",
+  "new_kernel": "mohrezsayeh/master9-flexible-magnetic-path-controller",
+  "new_kernel_version": 1,
+  "original_preserved": true,
+  "github_actions_sync_enabled": false,
+  "local_validation_passed": true,
+  "local_runtime": "Python 3.12; torch 2.15.0+cpu",
+  "training_seed": 317
+}
