@@ -8,5 +8,7 @@
   "github_actions_sync_enabled": false,
   "local_validation_passed": true,
   "local_runtime": "Python 3.12; torch 2.15.0+cpu",
-  "training_seed": 317
+  "training_seed": 317,
+  "kaggle_status": "COMPLETE",
+  "kaggle_validation_passed": true
 }

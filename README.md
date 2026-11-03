@@ -47,6 +47,6 @@ python scripts/train_policy.py --steps 2500
 
 ## Kaggle و GitHub
 
-نسخهٔ جدید خصوصی Kaggle: https://www.kaggle.com/code/mohrezsayeh/master9-flexible-magnetic-path-controller
+نسخهٔ جدید خصوصی Kaggle (اجرای نسخهٔ ۱ کامل شد و آزمون‌ها پاس شدند؛ گزارش: `results/kaggle_validation.json`): https://www.kaggle.com/code/mohrezsayeh/master9-flexible-magnetic-path-controller
 
 نوت‌بوک `notebooks/magnetic_path_controller.ipynb` مستقل و دارای وزن‌های آموزش‌دیده است. بدون کلید API اجرا می‌شود. می‌توان آن را از GitHub در Kaggle وارد کرد. انتشار در Kaggle با `kaggle kernels push -p <folder>` به توکن محیطی نیاز دارد؛ هیچ توکنی در این مخزن ذخیره نشده است. همگام‌سازی خودکار GitHub Actions در این نسخه فعال نیست.
