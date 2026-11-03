@@ -1,0 +1,17 @@
+{
+  "kaggle_kernel": "mohrezsayeh/master9",
+  "training_kernel_version": 1,
+  "distribution_kernel_version": 2,
+  "training_device": "Tesla T4",
+  "training_seconds": 291.877161026001,
+  "physics_tests_passed": true,
+  "control_tests_passed": true,
+  "checkpoint_sha256": "d5f428680f2e8cecc37b261463ea6cb410e15d9a73ea54347ef195413e551300",
+  "labelled_control_or_trajectory_samples": 0,
+  "magnetic_field": "prescribed analytical mirror-source field",
+  "initial_layer": "analytical hard ansatz; learned slow correction",
+  "flow_reynolds": "derived consistently from rho,U,eta",
+  "distribution_note": "version 2 bundles the version 1 GPU weights; repeats validation without retraining by default",
+  "distribution_status": "COMPLETE",
+  "distribution_revalidation_passed": true
+}
