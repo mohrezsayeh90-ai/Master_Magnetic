@@ -1,3 +1,14 @@
+# Master10 — تابع میدان مغناطیسی به مسیر ذره با DeepONet
+
+بخش جدید مستقل: [روش، معادلات و نحوهٔ استفاده](magnetic_operator/README_FA.md).
+دو تابع زمانی میدانِ منابع، ورودی عملگرند؛ تابع جدید بدون بازآموزی به مسیر تبدیل می‌شود. نیروی گرادیان مربع میدان با جملهٔ تداخل دو منبع محاسبه می‌شود. مدل بیش‌میرا، هندسه و دامنهٔ محدود و آزمون مستقل دارد؛ تضمین پاسخ برای همهٔ میدان‌های فضایی–زمانی ممکن نیست.
+
+اجرای Kaggle: https://www.kaggle.com/code/mohrezsayeh/master10-magnetic-function-deeponet
+
+```bash
+python scripts/operator/predict_csv.py examples/operator_field.csv --verify
+```
+
 # Master9 — پارامتری‌سازی فیزیکی با PINN
 
 نسخهٔ جدید با رینولدز، خواص سیال، محل رهایش و سرعت اولیهٔ ذره: [راهنمای کامل](master9/README.md) · [نوت‌بوک Kaggle](https://www.kaggle.com/code/mohrezsayeh/master9) · [گزارش و وزن‌های GPU](results/master9).
