@@ -1,0 +1,28 @@
+{
+  "case": "12_phase_interference",
+  "time_s": 0.8,
+  "a_left": 0.11087840200836271,
+  "a_right": 0.1672253111571731,
+  "field_kind": "Prescribed analytical field used by Master10, no new model or geometry",
+  "transverse_sections": [
+    {
+      "z_mm": -40.0,
+      "B_at_x_minus75_um_mT": 21.833955182535455,
+      "B_at_x0_mT": 21.84221455542226,
+      "B_at_x_plus75_um_mT": 21.850550717144902
+    },
+    {
+      "z_mm": 0.0,
+      "B_at_x_minus75_um_mT": 8.687227381141584,
+      "B_at_x0_mT": 8.85095179171971,
+      "B_at_x_plus75_um_mT": 9.01486290315614
+    },
+    {
+      "z_mm": 23.0,
+      "B_at_x_minus75_um_mT": 28.548826491432322,
+      "B_at_x0_mT": 28.57014589214697,
+      "B_at_x_plus75_um_mT": 28.591908753142746
+    }
+  ],
+  "plot_C": "Signed deviation of field magnitude from its x=0 value at each z; microtesla, not error."
+}
