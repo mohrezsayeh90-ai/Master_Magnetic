@@ -18,8 +18,10 @@
     "max_window_tau": 0.0125,
     "sampling_tolerance": 0.0005
   },
-  "plots": "Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.",
-  "plot_revision": "Full-channel fluid view retained; zoomed plain trajectory view without any fluid speed plot or colorbar.",
+  "plots": "Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot pointwise symmetric relative percent, linear axes, all points retained.",
+  "plot_revision": "Panel 06 uses pointwise symmetric absolute relative error percent; absolute error retained in original CSVs and validation metrics.",
+  "relative_error_definition": "E_i(t) = 100 abs(network_i(t)-ODE_i(t)) / ((abs(network_i(t))+abs(ODE_i(t)))/2)",
+  "relative_error_zero_convention": "Both values exactly zero -> 0; no epsilon, no clipping. Opposite signs can yield 200 percent. Coordinate-origin dependent; near-zero coordinates may inflate percent despite small absolute error.",
   "rendered_from_cached_validated_data": true,
   "initial_velocity": "Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.",
   "cases": [
@@ -52,7 +54,11 @@
       "inference_seconds": 0.22568707600021298,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.8482801673651003,
+      "max_relative_z_percent": 14.528505907934134,
+      "mean_relative_x_percent": 0.16762898595548995,
+      "mean_relative_z_percent": 0.021541261204425934
     },
     {
       "case": "02_constant_left",
@@ -83,7 +89,11 @@
       "inference_seconds": 0.22706904299957387,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.42561867561704547,
+      "max_relative_z_percent": 24.22608864010353,
+      "mean_relative_x_percent": 0.10282369796731221,
+      "mean_relative_z_percent": 0.03450535566243082
     },
     {
       "case": "03_gaussian_pulse",
@@ -114,7 +124,11 @@
       "inference_seconds": 0.24721280499943532,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 3.0738550293295517,
+      "max_relative_z_percent": 0.05180293699286798,
+      "mean_relative_x_percent": 1.1033857453736242,
+      "mean_relative_z_percent": 0.00048284539915674507
     },
     {
       "case": "04_sinusoidal",
@@ -145,7 +159,11 @@
       "inference_seconds": 0.2199501680006506,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 9.161771715098686,
+      "max_relative_z_percent": 0.1390307044196803,
+      "mean_relative_x_percent": 0.28676576231386225,
+      "mean_relative_z_percent": 0.0014690744079581424
     },
     {
       "case": "05_source_switch",
@@ -176,7 +194,11 @@
       "inference_seconds": 0.28066309899986663,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 119.78935837005729,
+      "max_relative_z_percent": 0.3048421497485249,
+      "mean_relative_x_percent": 0.3463485295356633,
+      "mean_relative_z_percent": 0.002457638585185599
     },
     {
       "case": "06_two_source_chirp",
@@ -207,7 +229,11 @@
       "inference_seconds": 0.2552691809996759,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 200.0,
+      "max_relative_z_percent": 1.6781114010415186,
+      "mean_relative_x_percent": 1.7568864499166097,
+      "mean_relative_z_percent": 0.004902515314810546
     },
     {
       "case": "07_offset_alternating",
@@ -238,7 +264,11 @@
       "inference_seconds": 0.24228916299944103,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.01983735288611694,
+      "max_relative_z_percent": 5.68543689965732,
+      "mean_relative_x_percent": 0.006455977889207515,
+      "mean_relative_z_percent": 0.03635804596991609
     },
     {
       "case": "08_alternating_pulses",
@@ -269,7 +299,11 @@
       "inference_seconds": 0.2829794480003329,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.005235793818591605,
+      "max_relative_z_percent": 0.24242942477325333,
+      "mean_relative_x_percent": 0.0030655753147106183,
+      "mean_relative_z_percent": 0.003605757304092173
     },
     {
       "case": "09_slow_dual_chirp",
@@ -300,7 +334,11 @@
       "inference_seconds": 0.2734834220000266,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.032054365617074435,
+      "max_relative_z_percent": 0.41879726159739405,
+      "mean_relative_x_percent": 0.016719911946745672,
+      "mean_relative_z_percent": 0.0039303278448857585
     },
     {
       "case": "10_fast_multisine",
@@ -331,7 +369,11 @@
       "inference_seconds": 0.16643423900040943,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.0059691469361803804,
+      "max_relative_z_percent": 3.9576802391081127,
+      "mean_relative_x_percent": 0.0019880383645943665,
+      "mean_relative_z_percent": 0.018036192192159226
     },
     {
       "case": "11_downstream_switch",
@@ -362,7 +404,11 @@
       "inference_seconds": 0.18645524300063698,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.007831575744468118,
+      "max_relative_z_percent": 0.0008566998856003571,
+      "mean_relative_x_percent": 0.005832871527138538,
+      "mean_relative_z_percent": 0.00031252817323950305
     },
     {
       "case": "12_phase_interference",
@@ -393,7 +439,11 @@
       "inference_seconds": 0.26676059199962765,
       "inference_ODE_calls": 0,
       "retraining_steps": 0,
-      "passed": true
+      "passed": true,
+      "max_relative_x_percent": 0.0038414695152108845,
+      "max_relative_z_percent": 1.1117486357862982,
+      "mean_relative_x_percent": 0.0010968634513553253,
+      "mean_relative_z_percent": 0.007868754582999503
     }
   ]
 }

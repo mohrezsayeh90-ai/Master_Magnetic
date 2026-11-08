@@ -26,6 +26,16 @@ NETWORK='#e52caa';NUMERICAL='#173f59';BASE='#e08a00';CYAN='#008da8'
 
 def checksum():return hashlib.sha256((ROOT/'results/operator/checkpoint.pt').read_bytes()).hexdigest()
 
+def relative_error_percent(prediction,numerical):
+    """Pointwise symmetric absolute relative error, in percent.
+
+    Denominator is the mean of magnitudes (not the signed arithmetic mean).
+    Both values exactly zero -> zero by convention. No epsilon or clipping.
+    """
+    denominator=(np.abs(prediction)+np.abs(numerical))/2
+    return np.divide(100*np.abs(prediction-numerical),denominator,
+                     out=np.zeros_like(denominator,dtype=float),where=denominator>0)
+
 def main():
     OUT.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2);model=load(ROOT/'results/operator')
     sha=checksum();items=[]
@@ -73,6 +83,16 @@ def main():
         items.append((c,t,amps,pred,baseline,truth,error,row))
         print(c['slug'],ex,ez,flush=True)
     assert sha==checksum()
+    for c,t,a,pred,baseline,truth,error,row in items:
+        relative=relative_error_percent(pred,truth)
+        assert np.isfinite(relative).all() and np.max(relative)<=200+1e-9
+        row.update(max_relative_x_percent=float(relative[:,0].max()),
+                   max_relative_z_percent=float(relative[:,1].max()),
+                   mean_relative_x_percent=float(relative[:,0].mean()),
+                   mean_relative_z_percent=float(relative[:,1].mean()))
+        np.savetxt(OUT/(c['slug']+'_relative_error.csv'),
+           np.column_stack((t,relative,(abs(pred)+abs(truth))/2,abs(error))),delimiter=',',comments='',
+           header='time_s,symmetric_relative_x_percent,symmetric_relative_z_percent,mean_abs_x_m,mean_abs_z_m,absolute_x_error_um,absolute_z_error_um')
     bmax=BS*.7071067812*1000
     def panel(ax,j,item,wide):
         c,t,a,pred,baseline,truth,error,row=item;p=c['parameters'];initial=np.array(c['initial'])
@@ -125,11 +145,13 @@ def main():
             ax.set(xlabel='Time (s)',ylabel='x(t) (µm)',xlim=(0,c['duration']));ax.grid(alpha=.16);ax.legend(fontsize=7)
             ax.ticklabel_format(axis='y',style='plain',useOffset=False)
         else:
-            for k,color,label in ((0,NETWORK,'|x network − x ODE|'),(1,CYAN,'|z network − z ODE|')):
-                values=abs(error[:,k]);ax.semilogy(t,np.where(values>1e-10,values,np.nan),color=color,lw=1.2,label=label)
-            ax.set(xlabel='Time (s)',ylabel='Absolute error (µm) · log scale',xlim=(0,c['duration']));ax.grid(alpha=.18);ax.legend(fontsize=6.5)
-            ax.text(.04,.04,f'Max x: {row["max_x_error_um"]:.4f} µm\nMax z: {row["max_z_error_um"]:.3f} µm',transform=ax.transAxes,fontsize=8,bbox={'facecolor':'white','alpha':.9,'edgecolor':'#ddd'})
-        ax.set_title(['01  Magnetic input','02  Space–time magnetic field','03  Trained-domain fluid flow','04  Network / numerical paths','05  Transverse response','06  Actual prediction error'][j],pad=10)
+            relative=relative_error_percent(pred,truth)
+            for k,color,label in ((0,NETWORK,'Relative x error'),(1,CYAN,'Relative z error')):
+                ax.plot(t,relative[:,k],color=color,lw=1.2,label=label)
+            ax.set(xlabel='Time (s)',ylabel='Symmetric relative error (%)',xlim=(0,c['duration']),ylim=(0,None));ax.grid(alpha=.18);ax.legend(fontsize=6.5)
+            ax.ticklabel_format(axis='y',style='plain',useOffset=False)
+            ax.text(.04,.04,f'Max x: {row["max_relative_x_percent"]:.4g}%\nMax z: {row["max_relative_z_percent"]:.4g}%',transform=ax.transAxes,fontsize=8,bbox={'facecolor':'white','alpha':.9,'edgecolor':'#ddd'})
+        ax.set_title(['01  Magnetic input','02  Space–time magnetic field','03  Trained-domain fluid flow','04  Network / numerical paths','05  Transverse response','06  Relative prediction error'][j],pad=10)
     with PdfPages(OUT/'trained_cases_slides.pdf') as pdf,PdfPages(OUT/'trained_cases_chains.pdf') as widepdf:
       for item in items:
         c,*_=item;p=c['parameters'];initial=c['initial']
@@ -141,7 +163,7 @@ def main():
             subtitle=f"{c['group']} case  ·  x₀={initial[0]*1e6:.2f} µm, z₀={initial[1]*1000:.1f} mm  ·  Umean={p.mean*1000:g} mm/s, η={p.eta*1000:.3f} mPa·s  ·  T={c['duration']:g} s"
             fig.text(.5,.90 if wide else .91,subtitle,ha='center',fontsize=10,color='#566576')
             fig.text(.045,.05,'Magenta: trained network with B. Dark open circles: direct physical ODE (no neural model). Orange dashed: same release without B.',fontsize=9,color='#064565')
-            fig.text(.045,.012,'Original straight-channel geometry and overdamped equation. No independent launch-velocity input. No-B paths remain straight. Spatial axes use different units.',fontsize=8,color='#566576')
+            fig.text(.045,.012,'Panel 06: 100 |network − ODE| / mean(|network|, |ODE|), per coordinate. Near-zero coordinates may create peaks. Spatial axes use different units.',fontsize=8,color='#566576')
             if wide:
                 for xp in (.186,.347,.507,.669,.831):fig.text(xp,.94,'→',color='#c08012',fontsize=19)
                 fig.savefig(OUT/(c['slug']+'_chain.png'),dpi=220);fig.savefig(OUT/(c['slug']+'_chain.svg'));widepdf.savefig(fig)
@@ -170,14 +192,21 @@ def main():
         assert len(fig.axes)==1 and len(ax.collections)==0
         fig.savefig(OUT/(slug+'_paths_no_colorbar.png'),dpi=220)
         fig.savefig(OUT/(slug+'_paths_no_colorbar.pdf'));plt.close(fig)
+        fig,ax=plt.subplots(figsize=(7,4.5));fig.subplots_adjust(left=.16,right=.96,bottom=.21,top=.86)
+        panel(ax,5,sample,False)
+        fig.text(.16,.04,'100 × |network − ODE| / mean(|network|, |ODE|); peaks near zero are retained.',fontsize=8,color='#566576')
+        fig.savefig(OUT/(slug+'_relative_error.png'),dpi=220)
+        fig.savefig(OUT/(slug+'_relative_error.pdf'));plt.close(fig)
     report={'all_passed':True,'checkpoint_sha256':sha,'checkpoint_unchanged':checksum()==sha,'trained_model':'Existing Master10; no retraining',
       'geometry':'Original fixed straight cylindrical-channel center-plane model and two mirror magnetic sources',
       'equation':'Overdamped v_particle = v_fluid + F_m/(6*pi*eta*rp); F_m=alpha/2 grad(|B|^2)',
       'inference_ODE_calls':0,'retraining_steps':0,'independent_reference':'SciPy DOP853 of analytic physics.numpy_rhs; no network or learned flow/field. Step .002s refined to .001s.',
       'acceptance_thresholds':{'max_x_um':.75,'max_z_um':15,'reference_refinement_um':.001,'baseline_analytic_m':1e-11},
       'inference_settings':{'max_window_tau':.0125,'sampling_tolerance':.0005},
-      'plots':'Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.',
-      'plot_revision':'Full-channel fluid view retained; zoomed plain trajectory view without any fluid speed plot or colorbar.',
+      'plots':'Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot pointwise symmetric relative percent, linear axes, all points retained.',
+      'plot_revision':'Panel 06 uses pointwise symmetric absolute relative error percent; absolute error retained in original CSVs and validation metrics.',
+      'relative_error_definition':'E_i(t) = 100 abs(network_i(t)-ODE_i(t)) / ((abs(network_i(t))+abs(ODE_i(t)))/2)',
+      'relative_error_zero_convention':'Both values exactly zero -> 0; no epsilon, no clipping. Opposite signs can yield 200 percent. Coordinate-origin dependent; near-zero coordinates may inflate percent despite small absolute error.',
       'rendered_from_cached_validated_data':reuse,
       'initial_velocity':'Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.',
       'cases':[i[-1] for i in items]}
