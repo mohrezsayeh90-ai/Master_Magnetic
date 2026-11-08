@@ -90,30 +90,34 @@ def main():
             cb=plt.colorbar(im,ax=ax,orientation='horizontal',pad=.21 if wide else .22,fraction=.07,aspect=28)
             cb.set_label(f'|B| (mT) at x = {initial[0]*1e6:.1f} µm',fontsize=8);cb.ax.tick_params(labelsize=7)
             ax.set(xlabel='z (mm)',ylabel='Time (s)')
-        elif j in (2,3):
-            # Show the full computational channel in BOTH fluid/trajectory panels.
+        elif j==2:
+            # Fluid context: full computational channel and physical speed scale.
             zlo,zhi=-.08,.068
             z=np.linspace(zlo,zhi,241);x=np.linspace(-R,R,151);Z,X=np.meshgrid(z,x)
             v=2*p.mean*(1-(X/R)**2)*1000
             vmax=2*p.mean*1000
             im=ax.pcolormesh(Z*1000,X*1e6,v,cmap='viridis',vmin=0,vmax=vmax,shading='auto',rasterized=True)
-            if j==2:
-                for xx in np.linspace(-60,60,7):
-                    ax.axhline(xx,color='white',alpha=.4,lw=.6)
-                    for zz in np.linspace(zlo,zhi,5)[1:-1]:
-                        ax.annotate('',xy=((zz+.03*(zhi-zlo))*1000,xx),xytext=(zz*1000,xx),arrowprops={'arrowstyle':'->','color':'white','lw':.7})
-            else:
-                ax.plot(baseline[:,1]*1000,baseline[:,0]*1e6,'--',color=BASE,lw=1.5,label='No B · network')
-                ax.plot(pred[:,1]*1000,pred[:,0]*1e6,color=NETWORK,lw=2,label='With B · network')
-                ax.plot(truth[::32,1]*1000,truth[::32,0]*1e6,'o',ms=3,mfc='white',mec=NUMERICAL,mew=.8,label='ODE · no network')
-                ax.scatter(initial[1]*1000,initial[0]*1e6,s=24,c='#fff3b0',edgecolors=NUMERICAL,zorder=6)
-                ax.annotate('release',(initial[1]*1000,initial[0]*1e6),xytext=(3,10),textcoords='offset points',fontsize=7,color='white')
-                ax.legend(fontsize=6.5,loc='best')
+            for xx in np.linspace(-60,60,7):
+                ax.axhline(xx,color='white',alpha=.4,lw=.6)
+                for zz in np.linspace(zlo,zhi,5)[1:-1]:
+                    ax.annotate('',xy=((zz+.03*(zhi-zlo))*1000,xx),xytext=(zz*1000,xx),arrowprops={'arrowstyle':'->','color':'white','lw':.7})
             cb=plt.colorbar(im,ax=ax,orientation='horizontal',pad=.21 if wide else .22,fraction=.07,aspect=28)
             cb.set_ticks(np.linspace(0,vmax,5))
             cb.set_label('Fluid speed (mm/s)',fontsize=8);cb.ax.tick_params(labelsize=7)
             ax.set(xlabel='z (mm)',ylabel='x (µm)',xlim=(-80,68),ylim=(-75,75),xticks=[-80,-40,0,40,68],yticks=[-75,-50,-25,0,25,50,75])
             ax.axhline(-75,color=NUMERICAL,lw=1.2);ax.axhline(75,color=NUMERICAL,lw=1.2)
+        elif j==3:
+            # Trajectory detail: zoom to the paths, no fluid image or colorbar.
+            ax.set_facecolor('white')
+            ax.plot(baseline[:,1]*1000,baseline[:,0]*1e6,'--',color=BASE,lw=1.5,label='No B · network')
+            ax.plot(pred[:,1]*1000,pred[:,0]*1e6,color=NETWORK,lw=2,label='With B · network')
+            ax.plot(truth[::32,1]*1000,truth[::32,0]*1e6,'o',ms=3,mfc='white',mec=NUMERICAL,mew=.8,label='ODE · no network')
+            ylo=min(pred[:,0].min(),truth[:,0].min(),initial[0])*1e6
+            yhi=max(pred[:,0].max(),truth[:,0].max(),initial[0])*1e6
+            pad=max(.3,(yhi-ylo)*.3)
+            ax.set(xlabel='z (mm)',ylabel='x (µm)',xlim=(zlo*1000,zhi*1000),ylim=(ylo-pad,yhi+pad))
+            ax.ticklabel_format(axis='y',style='plain',useOffset=False)
+            ax.grid(alpha=.15);ax.legend(fontsize=6.5,loc='best')
         elif j==4:
             ax.plot(t,baseline[:,0]*1e6,'--',color=BASE,lw=1.5,label='No B')
             ax.plot(t,pred[:,0]*1e6,color=NETWORK,lw=2,label='Network')
@@ -157,16 +161,23 @@ def main():
     sample=next(i for i in items if i[0]['slug']=='07_offset_alternating')
     fig,axes=plt.subplots(1,2,figsize=(12,5.5));fig.subplots_adjust(left=.08,right=.97,bottom=.25,top=.86,wspace=.32)
     panel(axes[0],2,sample,False);panel(axes[1],3,sample,False)
-    fig.suptitle('Full channel · z = −80 to +68 mm · x = −75 to +75 µm',fontsize=14,color='#064565',weight='bold')
-    fig.savefig(OUT/'07_offset_alternating_full_channel.png',dpi=220);fig.savefig(OUT/'07_offset_alternating_full_channel.pdf');plt.close(fig)
+    fig.suptitle('Full-channel fluid flow and zoomed particle trajectories',fontsize=14,color='#064565',weight='bold')
+    fig.savefig(OUT/'07_offset_alternating_flow_and_paths.png',dpi=220);fig.savefig(OUT/'07_offset_alternating_flow_and_paths.pdf');plt.close(fig)
+    for slug in ('07_offset_alternating','11_downstream_switch'):
+        sample=next(i for i in items if i[0]['slug']==slug)
+        fig,ax=plt.subplots(figsize=(6,4.5));fig.subplots_adjust(left=.16,right=.96,bottom=.17,top=.87)
+        panel(ax,3,sample,False)
+        assert len(fig.axes)==1 and len(ax.collections)==0
+        fig.savefig(OUT/(slug+'_paths_no_colorbar.png'),dpi=220)
+        fig.savefig(OUT/(slug+'_paths_no_colorbar.pdf'));plt.close(fig)
     report={'all_passed':True,'checkpoint_sha256':sha,'checkpoint_unchanged':checksum()==sha,'trained_model':'Existing Master10; no retraining',
       'geometry':'Original fixed straight cylindrical-channel center-plane model and two mirror magnetic sources',
       'equation':'Overdamped v_particle = v_fluid + F_m/(6*pi*eta*rp); F_m=alpha/2 grad(|B|^2)',
       'inference_ODE_calls':0,'retraining_steps':0,'independent_reference':'SciPy DOP853 of analytic physics.numpy_rhs; no network or learned flow/field. Step .002s refined to .001s.',
       'acceptance_thresholds':{'max_x_um':.75,'max_z_um':15,'reference_refinement_um':.001,'baseline_analytic_m':1e-11},
       'inference_settings':{'max_window_tau':.0125,'sampling_tolerance':.0005},
-      'plots':'Shared B scale 0..111.07 mT. Fluid and trajectory panels: full z=-80..68 mm and x=-75..75 um; matched flow scale 0..2U for each case. Only temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.',
-      'plot_revision':'Full-channel fluid/trajectory views and case-specific physical speed colorbars.',
+      'plots':'Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.',
+      'plot_revision':'Full-channel fluid view retained; zoomed plain trajectory view without any fluid speed plot or colorbar.',
       'rendered_from_cached_validated_data':reuse,
       'initial_velocity':'Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.',
       'cases':[i[-1] for i in items]}

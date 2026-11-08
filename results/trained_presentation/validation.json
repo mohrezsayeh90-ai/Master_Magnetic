@@ -18,8 +18,8 @@
     "max_window_tau": 0.0125,
     "sampling_tolerance": 0.0005
   },
-  "plots": "Shared B scale 0..111.07 mT. Fluid and trajectory panels: full z=-80..68 mm and x=-75..75 um; matched flow scale 0..2U for each case. Only temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.",
-  "plot_revision": "Full-channel fluid/trajectory views and case-specific physical speed colorbars.",
+  "plots": "Shared B scale 0..111.07 mT. Fluid panel: full z=-80..68 mm and x=-75..75 um, flow scale 0..2U per case. Trajectory panel: zoomed to paths on white background, no speed field or colorbar. Temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.",
+  "plot_revision": "Full-channel fluid view retained; zoomed plain trajectory view without any fluid speed plot or colorbar.",
   "rendered_from_cached_validated_data": true,
   "initial_velocity": "Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.",
   "cases": [
