@@ -29,12 +29,25 @@ def checksum():return hashlib.sha256((ROOT/'results/operator/checkpoint.pt').rea
 def main():
     OUT.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2);model=load(ROOT/'results/operator')
     sha=checksum();items=[]
+    reuse='--reuse-data' in sys.argv
+    saved=json.loads((OUT/'validation.json').read_text()) if reuse else None
+    if reuse and (not saved['all_passed'] or saved['checkpoint_sha256']!=sha):
+        raise RuntimeError('Cached results do not match the validated checkpoint')
     plt.rcParams.update({'font.family':'DejaVu Sans','font.size':9,'axes.titlesize':10,
       'axes.titleweight':'bold','axes.titlecolor':'#006581','pdf.fonttype':42,'svg.fonttype':'none',
       'figure.facecolor':'white','axes.spines.top':True,'axes.spines.right':True})
     for c in cases():
         p=c['parameters'].validate();initial=np.array(c['initial']);t=np.linspace(0,c['duration'],801)
         amps=np.array([c['field'](v) for v in t]);assert abs(amps).sum(1).max()<=AMAX+1e-10
+        if reuse:
+            data=np.loadtxt(OUT/(c['slug']+'.csv'),delimiter=',',skiprows=1)
+            row=next(r for r in saved['cases'] if r['case']==c['slug'])
+            assert row['parameters']==asdict(p) and np.allclose(row['initial_m'],initial)
+            assert np.allclose(data[:,0],t) and np.allclose(data[:,1:3],amps)
+            baseline,pred,truth,error=data[:,7:9],data[:,9:11],data[:,11:13],data[:,13:15]
+            assert np.allclose((pred-truth)*1e6,error,rtol=1e-10,atol=1e-12)
+            items.append((c,t,amps,pred,baseline,truth,error,row))
+            continue
         # Any attempted solve_ivp call during network inference fails immediately.
         with patch('magnetic_operator.inference.solve_ivp',side_effect=AssertionError('ODE called during inference')):
             pred,meta=predict(model,c['field'],t,p,initial,max_window_tau=.0125,sampling_tolerance=.0005)
@@ -78,8 +91,12 @@ def main():
             cb.set_label(f'|B| (mT) at x = {initial[0]*1e6:.1f} µm',fontsize=8);cb.ax.tick_params(labelsize=7)
             ax.set(xlabel='z (mm)',ylabel='Time (s)')
         elif j in (2,3):
+            # Show the full computational channel in BOTH fluid/trajectory panels.
+            zlo,zhi=-.08,.068
+            z=np.linspace(zlo,zhi,241);x=np.linspace(-R,R,151);Z,X=np.meshgrid(z,x)
             v=2*p.mean*(1-(X/R)**2)*1000
-            im=ax.pcolormesh(Z*1000,X*1e6,v,cmap='viridis',vmin=0,vmax=60,shading='auto',rasterized=True)
+            vmax=2*p.mean*1000
+            im=ax.pcolormesh(Z*1000,X*1e6,v,cmap='viridis',vmin=0,vmax=vmax,shading='auto',rasterized=True)
             if j==2:
                 for xx in np.linspace(-60,60,7):
                     ax.axhline(xx,color='white',alpha=.4,lw=.6)
@@ -89,12 +106,14 @@ def main():
                 ax.plot(baseline[:,1]*1000,baseline[:,0]*1e6,'--',color=BASE,lw=1.5,label='No B · network')
                 ax.plot(pred[:,1]*1000,pred[:,0]*1e6,color=NETWORK,lw=2,label='With B · network')
                 ax.plot(truth[::32,1]*1000,truth[::32,0]*1e6,'o',ms=3,mfc='white',mec=NUMERICAL,mew=.8,label='ODE · no network')
-                ylo=min(pred[:,0].min(),truth[:,0].min(),initial[0])*1e6;yhi=max(pred[:,0].max(),truth[:,0].max(),initial[0])*1e6
-                pad=max(.3,(yhi-ylo)*.3);ax.set_ylim(ylo-pad,yhi+pad)
+                ax.scatter(initial[1]*1000,initial[0]*1e6,s=24,c='#fff3b0',edgecolors=NUMERICAL,zorder=6)
+                ax.annotate('release',(initial[1]*1000,initial[0]*1e6),xytext=(3,10),textcoords='offset points',fontsize=7,color='white')
                 ax.legend(fontsize=6.5,loc='best')
             cb=plt.colorbar(im,ax=ax,orientation='horizontal',pad=.21 if wide else .22,fraction=.07,aspect=28)
+            cb.set_ticks(np.linspace(0,vmax,5))
             cb.set_label('Fluid speed (mm/s)',fontsize=8);cb.ax.tick_params(labelsize=7)
-            ax.set(xlabel='z (mm)',ylabel='x (µm)',xlim=(zlo*1000,zhi*1000))
+            ax.set(xlabel='z (mm)',ylabel='x (µm)',xlim=(-80,68),ylim=(-75,75),xticks=[-80,-40,0,40,68],yticks=[-75,-50,-25,0,25,50,75])
+            ax.axhline(-75,color=NUMERICAL,lw=1.2);ax.axhline(75,color=NUMERICAL,lw=1.2)
         elif j==4:
             ax.plot(t,baseline[:,0]*1e6,'--',color=BASE,lw=1.5,label='No B')
             ax.plot(t,pred[:,0]*1e6,color=NETWORK,lw=2,label='Network')
@@ -135,13 +154,20 @@ def main():
     for item in items:
         slide=deck.slides.add_slide(deck.slide_layouts[6]);slide.shapes.add_picture(str(OUT/(item[0]['slug']+'_slide.png')),0,0,width=deck.slide_width,height=deck.slide_height)
     deck.save(OUT/'trained_cases_presentation.pptx')
+    sample=next(i for i in items if i[0]['slug']=='07_offset_alternating')
+    fig,axes=plt.subplots(1,2,figsize=(12,5.5));fig.subplots_adjust(left=.08,right=.97,bottom=.25,top=.86,wspace=.32)
+    panel(axes[0],2,sample,False);panel(axes[1],3,sample,False)
+    fig.suptitle('Full channel · z = −80 to +68 mm · x = −75 to +75 µm',fontsize=14,color='#064565',weight='bold')
+    fig.savefig(OUT/'07_offset_alternating_full_channel.png',dpi=220);fig.savefig(OUT/'07_offset_alternating_full_channel.pdf');plt.close(fig)
     report={'all_passed':True,'checkpoint_sha256':sha,'checkpoint_unchanged':checksum()==sha,'trained_model':'Existing Master10; no retraining',
       'geometry':'Original fixed straight cylindrical-channel center-plane model and two mirror magnetic sources',
       'equation':'Overdamped v_particle = v_fluid + F_m/(6*pi*eta*rp); F_m=alpha/2 grad(|B|^2)',
       'inference_ODE_calls':0,'retraining_steps':0,'independent_reference':'SciPy DOP853 of analytic physics.numpy_rhs; no network or learned flow/field. Step .002s refined to .001s.',
       'acceptance_thresholds':{'max_x_um':.75,'max_z_um':15,'reference_refinement_um':.001,'baseline_analytic_m':1e-11},
       'inference_settings':{'max_window_tau':.0125,'sampling_tolerance':.0005},
-      'plots':'Shared B color scale 0..111.07 mT, flow scale 0..60 mm/s; individual trajectory and response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.',
+      'plots':'Shared B scale 0..111.07 mT. Fluid and trajectory panels: full z=-80..68 mm and x=-75..75 um; matched flow scale 0..2U for each case. Only temporal response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.',
+      'plot_revision':'Full-channel fluid/trajectory views and case-specific physical speed colorbars.',
+      'rendered_from_cached_validated_data':reuse,
       'initial_velocity':'Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.',
       'cases':[i[-1] for i in items]}
     (OUT/'validation.json').write_text(json.dumps(report,indent=2))
