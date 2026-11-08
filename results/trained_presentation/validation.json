@@ -1,0 +1,397 @@
+{
+  "all_passed": true,
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133",
+  "checkpoint_unchanged": true,
+  "trained_model": "Existing Master10; no retraining",
+  "geometry": "Original fixed straight cylindrical-channel center-plane model and two mirror magnetic sources",
+  "equation": "Overdamped v_particle = v_fluid + F_m/(6*pi*eta*rp); F_m=alpha/2 grad(|B|^2)",
+  "inference_ODE_calls": 0,
+  "retraining_steps": 0,
+  "independent_reference": "SciPy DOP853 of analytic physics.numpy_rhs; no network or learned flow/field. Step .002s refined to .001s.",
+  "acceptance_thresholds": {
+    "max_x_um": 0.75,
+    "max_z_um": 15,
+    "reference_refinement_um": 0.001,
+    "baseline_analytic_m": 1e-11
+  },
+  "inference_settings": {
+    "max_window_tau": 0.0125,
+    "sampling_tolerance": 0.0005
+  },
+  "plots": "Shared B color scale 0..111.07 mT, flow scale 0..60 mm/s; individual trajectory and response y axes auto-scaled; error plot log scale, exact/roundoff zeros omitted.",
+  "initial_velocity": "Not an independent parameter of this trained overdamped model; changing launch location and U changes local fluid/terminal particle speed.",
+  "cases": [
+    {
+      "case": "01_constant_right",
+      "group": "Original",
+      "title": "Constant right source",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.45,
+      "max_x_error_um": 0.0037628355658313917,
+      "max_z_error_um": 0.61269795835657,
+      "rms_x_error_um": 0.0018750010469977707,
+      "rms_z_error_um": 0.3513597245276054,
+      "reference_step_refinement_change_um": [
+        4.404571325722362e-14,
+        1.6306400674181987e-10
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.22568707600021298,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "02_constant_left",
+      "group": "Original",
+      "title": "Constant left source",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.45,
+      "max_x_error_um": 0.0005888039306645133,
+      "max_z_error_um": 0.46440441801159915,
+      "rms_x_error_um": 0.0002940475295317997,
+      "rms_z_error_um": 0.2272342844530627,
+      "reference_step_refinement_change_um": [
+        4.404571325722362e-14,
+        1.6306400674181987e-10
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.22706904299957387,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "03_gaussian_pulse",
+      "group": "Original",
+      "title": "Gaussian pulse on the right",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.6199920918871692,
+      "max_x_error_um": 0.002399067982028266,
+      "max_z_error_um": 0.08334881545536688,
+      "rms_x_error_um": 0.0012966863814422708,
+      "rms_z_error_um": 0.03142070842333666,
+      "reference_step_refinement_change_um": [
+        1.3129010682441655e-14,
+        3.677613769070831e-10
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.24721280499943532,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "04_sinusoidal",
+      "group": "Original",
+      "title": "Sinusoidal right source",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.55,
+      "max_x_error_um": 0.0040115786041849495,
+      "max_z_error_um": 0.2798938807668794,
+      "rms_x_error_um": 0.00210064785973177,
+      "rms_z_error_um": 0.1467751605305569,
+      "reference_step_refinement_change_um": [
+        5.421010862427522e-14,
+        2.3592239273284576e-10
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.2199501680006506,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "05_source_switch",
+      "group": "Original",
+      "title": "Smooth switch: left to right",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.5,
+      "max_x_error_um": 0.0019638181502314362,
+      "max_z_error_um": 0.48494551162583943,
+      "rms_x_error_um": 0.0009026497123005043,
+      "rms_z_error_um": 0.2568603635699422,
+      "reference_step_refinement_change_um": [
+        1.5246593050577406e-14,
+        7.632783294297951e-11
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.28066309899986663,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "06_two_source_chirp",
+      "group": "Original",
+      "title": "Two-source chirp and cosine",
+      "field_function": "<lambda>",
+      "parameters": {
+        "eta": 0.003276913272013514,
+        "mean": 0.015,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        0.0,
+        -0.08
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 30.0,
+      "max_amplitude_L1": 0.5160764891108203,
+      "max_x_error_um": 0.0015262780153844865,
+      "max_z_error_um": 0.31556618133865566,
+      "rms_x_error_um": 0.0006647130707532369,
+      "rms_z_error_um": 0.1399810116837424,
+      "reference_step_refinement_change_um": [
+        6.3527471044072525e-15,
+        1.1102230246251565e-10
+      ],
+      "no_field_analytic_error_m": 3.139849491518021e-16,
+      "inference_seconds": 0.2552691809996759,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "07_offset_alternating",
+      "group": "Additional",
+      "title": "Off-axis release \u00b7 alternating attraction",
+      "field_function": "alternating",
+      "parameters": {
+        "eta": 0.002,
+        "mean": 0.008,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        -2.2499999999999998e-05,
+        -0.04
+      ],
+      "duration_s": 3.2,
+      "initial_fluid_speed_mm_s": 14.56,
+      "max_amplitude_L1": 0.5500000000000002,
+      "max_x_error_um": 0.0037992847047130067,
+      "max_z_error_um": 1.3027456528371186,
+      "rms_x_error_um": 0.001842666106452051,
+      "rms_z_error_um": 0.6750486688076051,
+      "reference_step_refinement_change_um": [
+        2.541098841762901e-13,
+        5.551115123125783e-11
+      ],
+      "no_field_analytic_error_m": 8.500145032286355e-17,
+      "inference_seconds": 0.24228916299944103,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "08_alternating_pulses",
+      "group": "Additional",
+      "title": "Shifted release \u00b7 alternating pulse train",
+      "field_function": "pulse_train",
+      "parameters": {
+        "eta": 0.0015,
+        "mean": 0.01,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        2.6249999999999998e-05,
+        -0.045
+      ],
+      "duration_s": 2.8,
+      "initial_fluid_speed_mm_s": 17.550000000000004,
+      "max_amplitude_L1": 0.5399724499332954,
+      "max_x_error_um": 0.0014139893451569545,
+      "max_z_error_um": 0.47664069137681037,
+      "rms_x_error_um": 0.0009090114431771363,
+      "rms_z_error_um": 0.19389486736748152,
+      "reference_step_refinement_change_um": [
+        6.098637220230962e-14,
+        9.71445146547012e-11
+      ],
+      "no_field_analytic_error_m": 4.9439619065339e-17,
+      "inference_seconds": 0.2829794480003329,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "09_slow_dual_chirp",
+      "group": "Additional",
+      "title": "Slow flow \u00b7 two-source chirps",
+      "field_function": "dual_chirp",
+      "parameters": {
+        "eta": 0.001,
+        "mean": 0.005,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        1.1249999999999999e-05,
+        -0.025
+      ],
+      "duration_s": 3.0,
+      "initial_fluid_speed_mm_s": 9.775,
+      "max_amplitude_L1": 0.5566518458786573,
+      "max_x_error_um": 0.0033452038428818534,
+      "max_z_error_um": 0.24314818875340038,
+      "rms_x_error_um": 0.0019999455245123705,
+      "rms_z_error_um": 0.10531337712497978,
+      "reference_step_refinement_change_um": [
+        6.268043809681823e-14,
+        4.163336342344337e-11
+      ],
+      "no_field_analytic_error_m": 1.3183898417423734e-16,
+      "inference_seconds": 0.2734834220000266,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "10_fast_multisine",
+      "group": "Additional",
+      "title": "Fast flow \u00b7 multi-frequency excitation",
+      "field_function": "multisine",
+      "parameters": {
+        "eta": 0.0035,
+        "mean": 0.025,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        -2.9999999999999997e-05,
+        -0.075
+      ],
+      "duration_s": 1.8,
+      "initial_fluid_speed_mm_s": 42.0,
+      "max_amplitude_L1": 0.5169592639566123,
+      "max_x_error_um": 0.001768717896712753,
+      "max_z_error_um": 1.2973389355662837,
+      "rms_x_error_um": 0.0008057743356321045,
+      "rms_z_error_um": 0.4271110813606894,
+      "reference_step_refinement_change_um": [
+        7.453889935837843e-14,
+        1.0408340855860843e-10
+      ],
+      "no_field_analytic_error_m": 1.0408340855860843e-16,
+      "inference_seconds": 0.16643423900040943,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "11_downstream_switch",
+      "group": "Additional",
+      "title": "Downstream release \u00b7 repeated source switching",
+      "field_function": "soft_switch",
+      "parameters": {
+        "eta": 0.0022,
+        "mean": 0.008,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        1.875e-05,
+        0.02
+      ],
+      "duration_s": 2.0,
+      "initial_fluid_speed_mm_s": 15.0,
+      "max_amplitude_L1": 0.6,
+      "max_x_error_um": 0.0017142547443172384,
+      "max_z_error_um": 0.22011060933982418,
+      "rms_x_error_um": 0.0012989155766606536,
+      "rms_z_error_um": 0.11903656851146026,
+      "reference_step_refinement_change_um": [
+        5.421010862427522e-14,
+        1.1796119636642288e-10
+      ],
+      "no_field_analytic_error_m": 2.7755575615628914e-16,
+      "inference_seconds": 0.18645524300063698,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    },
+    {
+      "case": "12_phase_interference",
+      "group": "Additional",
+      "title": "Shifted release \u00b7 phase-controlled interference",
+      "field_function": "phase_chirp",
+      "parameters": {
+        "eta": 0.0045,
+        "mean": 0.012,
+        "rho": 1000.0
+      },
+      "initial_m": [
+        -1.875e-05,
+        -0.06
+      ],
+      "duration_s": 3.2,
+      "initial_fluid_speed_mm_s": 22.5,
+      "max_amplitude_L1": 0.48497409360678423,
+      "max_x_error_um": 0.0007178167763727055,
+      "max_z_error_um": 0.5408795809890357,
+      "rms_x_error_um": 0.00027220335391899887,
+      "rms_z_error_um": 0.2657901659203288,
+      "reference_step_refinement_change_um": [
+        6.437450399132683e-14,
+        1.734723475976807e-10
+      ],
+      "no_field_analytic_error_m": 4.614364446098307e-16,
+      "inference_seconds": 0.26676059199962765,
+      "inference_ODE_calls": 0,
+      "retraining_steps": 0,
+      "passed": true
+    }
+  ]
+}
