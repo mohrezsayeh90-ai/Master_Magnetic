@@ -1,0 +1,99 @@
+{
+  "all_passed": true,
+  "cases": [
+    {
+      "case": "01_constant_right",
+      "title": "Constant right source",
+      "formula": "$a_L=0,\\quad a_R=0.45$",
+      "snapshot_time_s": 0.0,
+      "max_x_error_um": 0.007377543607107144,
+      "max_z_error_um": 1.2080186686108663,
+      "final_x_um": 11.070975517764108,
+      "max_abs_x_um": 11.070975517764108,
+      "inference_seconds": 0.10578427399991597,
+      "amplitude_max_L1": 0.45,
+      "passed": true
+    },
+    {
+      "case": "02_constant_left",
+      "title": "Constant left source",
+      "formula": "$a_L=0.45,\\quad a_R=0$",
+      "snapshot_time_s": 0.0,
+      "max_x_error_um": 0.0010222690140504408,
+      "max_z_error_um": 0.9353151041308072,
+      "final_x_um": -11.07774328839625,
+      "max_abs_x_um": 11.07774328839625,
+      "inference_seconds": 0.10859806299993124,
+      "amplitude_max_L1": 0.45,
+      "passed": true
+    },
+    {
+      "case": "03_gaussian_pulse",
+      "title": "Gaussian pulse on the right",
+      "formula": "$a_L=0,\\quad a_R=0.62e^{-((t-1.9)/0.35)^2}$",
+      "snapshot_time_s": 1.9000000000000001,
+      "max_x_error_um": 0.004640449708934398,
+      "max_z_error_um": 0.1617545660748121,
+      "final_x_um": 3.6908714913928318,
+      "max_abs_x_um": 3.6908714913928318,
+      "inference_seconds": 0.13608420399998522,
+      "amplitude_max_L1": 0.62,
+      "passed": true
+    },
+    {
+      "case": "04_sinusoidal",
+      "title": "Sinusoidal right source",
+      "formula": "$a_L=0,\\quad a_R=0.55\\sin(2\\pi\\,0.8t)$",
+      "snapshot_time_s": 0.31,
+      "max_x_error_um": 0.007990396297115508,
+      "max_z_error_um": 0.5745573013124505,
+      "final_x_um": 8.89541432393027,
+      "max_abs_x_um": 8.89541432393027,
+      "inference_seconds": 0.13463775499997155,
+      "amplitude_max_L1": 0.5499565743120989,
+      "passed": true
+    },
+    {
+      "case": "05_source_switch",
+      "title": "Smooth switch: left to right",
+      "formula": "$a_{L,R}=0.25[1\\mp\\tanh((t-1.5)/0.15)]$",
+      "snapshot_time_s": 0.0,
+      "max_x_error_um": 0.0037172693440846115,
+      "max_z_error_um": 0.8830257905521194,
+      "final_x_um": 11.593952851150558,
+      "max_abs_x_um": 11.593952851150558,
+      "inference_seconds": 0.12613290299998425,
+      "amplitude_max_L1": 0.5,
+      "passed": true
+    },
+    {
+      "case": "06_two_source_chirp",
+      "title": "Two-source chirp and cosine",
+      "formula": "$a_L=0.30\\sin(2\\pi(0.3t+0.25t^2)),\\quad a_R=0.22\\cos(2\\pi\\,0.35t)$",
+      "snapshot_time_s": 2.77,
+      "max_x_error_um": 0.003303782848006391,
+      "max_z_error_um": 0.6133340659120884,
+      "final_x_um": -0.9231183344551201,
+      "max_abs_x_um": 1.1175590653807508,
+      "inference_seconds": 0.12152488900005665,
+      "amplitude_max_L1": 0.5160732424509897,
+      "passed": true
+    }
+  ],
+  "duration_s": 3,
+  "query_points": 601,
+  "parameters": {
+    "eta_Pas": 0.003276913272013514,
+    "mean_m_s": 0.015,
+    "rho_kg_m3": 1000.0,
+    "initial_x_m": 0,
+    "initial_z_m": -0.08
+  },
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133",
+  "magnetic_map": "Snapshot at maximum sampled source-amplitude energy, not necessarily maximum field along the particle path.",
+  "color_scales": "One global B scale and one fluid scale for all cases.",
+  "trajectory_axes": "Individual slides auto-scale transverse axes for visibility; overview uses common +/-15 um axes.",
+  "spatial_geometry": "Fixed two-source geometry; sources lie outside the narrow plotted channel.",
+  "model": "Overdamped induced-dipole with Poiseuille flow, no Brownian/gravity. Flow is prescribed and unaffected by particle/field.",
+  "export": "PNG 220 dpi; vector SVG/PDF (heatmaps rasterized); six-page PDF and 16:9 PowerPoint with full-slide images."
+}
