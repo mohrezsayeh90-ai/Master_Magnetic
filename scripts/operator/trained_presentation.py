@@ -39,7 +39,8 @@ def relative_error_percent(prediction,numerical):
 def main():
     OUT.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2);model=load(ROOT/'results/operator')
     sha=checksum();items=[]
-    five_only='--five-panels' in sys.argv
+    snapshots_only='--with-snapshots' in sys.argv
+    five_only='--five-panels' in sys.argv or snapshots_only
     reuse='--reuse-data' in sys.argv or five_only
     saved=json.loads((OUT/'validation.json').read_text()) if reuse else None
     if reuse and (not saved['all_passed'] or saved['checkpoint_sha256']!=sha):
@@ -154,6 +155,10 @@ def main():
             ax.ticklabel_format(axis='y',style='plain',useOffset=False)
             ax.text(.04,.04,f'Max x: {row["max_relative_x_percent"]:.4g}%\nMax z: {row["max_relative_z_percent"]:.4g}%',transform=ax.transAxes,fontsize=8,bbox={'facecolor':'white','alpha':.9,'edgecolor':'#ddd'})
         ax.set_title(['01  Magnetic input','02  Space–time magnetic field','03  Trained-domain fluid flow','04  Network / numerical paths','05  Transverse response','06  Relative prediction error'][j],pad=10)
+    if snapshots_only:
+        from snapshot_report import export
+        export(items,panel,OUT)
+        return
     if five_only:
         target=OUT/'trained_cases_panels_1_to_5.pdf'
         with PdfPages(target) as pdf:

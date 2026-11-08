@@ -4,6 +4,8 @@
 
 ## فایل‌های آمادهٔ ارائه
 
+- [PDF کامل جدید با نقشهٔ میدان ثابت بلافاصله پس از ورودی هر حالت؛ ۲۴ صفحه، بدون نمودار خطا](trained_cases_complete_with_snapshots.pdf) · [معیار و زمان‌های انتخاب‌شده](SNAPSHOTS_FA.md)
+
 - [PDF جداگانهٔ ۱۲ حالت، فقط نمودارهای ۱ تا ۵، بدون قاب خطا](trained_cases_panels_1_to_5.pdf)؛ نسخه‌های شامل خطا نیز حفظ شده‌اند.
 
 - [نسخهٔ نهایی: جریان در کل کانال و مسیرِ بزرگ‌نمایی‌شده بدون کالربار](07_offset_alternating_flow_and_paths.png) · [PDF همان دو قاب](07_offset_alternating_flow_and_paths.pdf)
@@ -92,6 +94,12 @@ python scripts/operator/trained_presentation.py --reuse-data
 
 ```bash
 python scripts/operator/trained_presentation.py --five-panels
+```
+
+برای ساخت PDF کامل همراه با نقشهٔ فضایی میدان و برش‌های طولی و عرضی پس از ورودی هر حالت:
+
+```bash
+python scripts/operator/trained_presentation.py --with-snapshots
 ```
 
 نسخهٔ نهاییِ نمایش کل کانال در قاب جریان و مسیرِ زوم‌شدهٔ بدون کالربار با همین گزینه ساخته شده است؛ فایل‌های مسیر و خطا و وزن‌ها تغییر نکرده‌اند.

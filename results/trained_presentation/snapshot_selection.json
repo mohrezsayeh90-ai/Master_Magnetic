@@ -1,0 +1,163 @@
+{
+  "pdf": "trained_cases_complete_with_snapshots.pdf",
+  "pages": 24,
+  "selection_uses_prediction_errors": false,
+  "selections": [
+    {
+      "case": "01_constant_right",
+      "time_s": 1.5,
+      "amplitudes": [
+        0.0,
+        0.45
+      ],
+      "selection_rule": "Constant input: midpoint; spatial pattern is time independent.",
+      "axial_notch_mT": 0.0,
+      "peak_centreline_mT": 70.68583470577035,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "02_constant_left",
+      "time_s": 1.5,
+      "amplitudes": [
+        0.45,
+        0.0
+      ],
+      "selection_rule": "Constant input: midpoint; spatial pattern is time independent.",
+      "axial_notch_mT": 0.0,
+      "peak_centreline_mT": 70.68583470577035,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "03_gaussian_pulse",
+      "time_s": 1.899375,
+      "amplitudes": [
+        0.0,
+        0.6199980229623359
+      ],
+      "selection_rule": "No substantial axial notch: strongest actual centreline field.",
+      "axial_notch_mT": 0.0,
+      "peak_centreline_mT": 97.38906170893351,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "04_sinusoidal",
+      "time_s": 0.9375,
+      "amplitudes": [
+        0.0,
+        -0.55
+      ],
+      "selection_rule": "No substantial axial notch: strongest actual centreline field.",
+      "axial_notch_mT": 0.0,
+      "peak_centreline_mT": 86.39379797371932,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "05_source_switch",
+      "time_s": 1.5,
+      "amplitudes": [
+        0.25,
+        0.25
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 51.01271333241949,
+      "peak_centreline_mT": 51.01271333241949,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "06_two_source_chirp",
+      "time_s": 1.359375,
+      "amplitudes": [
+        -0.21896446482508042,
+        -0.2174577534562334
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 44.2895789505347,
+      "peak_centreline_mT": 44.5262526189072,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "07_offset_alternating",
+      "time_s": 0.0,
+      "amplitudes": [
+        0.275,
+        0.275
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 56.113984665661434,
+      "peak_centreline_mT": 56.113984665661434,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "08_alternating_pulses",
+      "time_s": 0.4497499999999999,
+      "amplitudes": [
+        0.5399982780639699,
+        7.366735361275047e-12
+      ],
+      "selection_rule": "No substantial axial notch: strongest actual centreline field.",
+      "axial_notch_mT": 0.0,
+      "peak_centreline_mT": 84.82273116468815,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "09_slow_dual_chirp",
+      "time_s": 0.77625,
+      "amplitudes": [
+        -0.2783982078871415,
+        -0.27794628090346746
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 56.69030163974771,
+      "peak_centreline_mT": 56.761290164341176,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "10_fast_multisine",
+      "time_s": 0.10237500000000001,
+      "amplitudes": [
+        0.15628275857547605,
+        0.15704427946795238
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 31.847737197537203,
+      "peak_centreline_mT": 31.96735661960514,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "11_downstream_switch",
+      "time_s": 0.0,
+      "amplitudes": [
+        0.3,
+        0.3
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 61.21525599890339,
+      "peak_centreline_mT": 61.21525599890339,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    },
+    {
+      "case": "12_phase_interference",
+      "time_s": 2.336,
+      "amplitudes": [
+        -0.1400386771274971,
+        -0.13996131931046027
+      ],
+      "selection_rule": "Maximum axial peak-minus-centre notch, among times with amplitude L1 >= 40% of its maximum.",
+      "axial_notch_mT": 28.554968133354812,
+      "peak_centreline_mT": 28.567119470839845,
+      "candidate_times": 1601,
+      "waveform_unchanged": true
+    }
+  ]
+}
