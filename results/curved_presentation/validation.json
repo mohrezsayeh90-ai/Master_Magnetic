@@ -1,0 +1,134 @@
+{
+  "method": "Numerical DOP853 with Radau cross-check; NOT a PINN/DeepONet prediction",
+  "flow": "Prescribed planar divergence-free streamfunction; not a Navier-Stokes/Maxwell solve",
+  "centerline_m": "18e-6 sin(2pi(z+.075)/.075) + 8e-6 sin(4pi(z+.075)/.075)",
+  "velocity": "u_z=2U(1-((x-c(z))/R)^2), u_x=c_prime(z)*u_z",
+  "U_profile_scale_m_s": 0.015,
+  "note_U": "U is a profile scale retained from Master10; mean across this planar width is 4U/3, not U.",
+  "duration_s": 3.2,
+  "release_local_offsets_m": [
+    2.3999999999999997e-05,
+    0.0,
+    -2.3999999999999997e-05
+  ],
+  "no_field_analytic_max_error_m": 6.670011765130823e-16,
+  "finite_difference_max_divergence_per_s": 5.303212313734207e-09,
+  "assumptions": "Overdamped induced dipole and Stokes drag; no Brownian/gravity/inertial launch transient.",
+  "cases": [
+    {
+      "case": "01_constant_right",
+      "title": "Constant right source",
+      "max_cross_solver_errors_um": [
+        [
+          2.7598230775346955e-09,
+          5.795581028977814e-08
+        ],
+        [
+          1.5797299991564262e-09,
+          5.8380492280740715e-09
+        ],
+        [
+          2.646300333811885e-09,
+          2.6887780196771516e-08
+        ]
+      ],
+      "all_passed": true
+    },
+    {
+      "case": "02_constant_left",
+      "title": "Constant left source",
+      "max_cross_solver_errors_um": [
+        [
+          2.525920011348104e-09,
+          2.395403753824299e-08
+        ],
+        [
+          1.8023268695630673e-09,
+          7.837697504897712e-09
+        ],
+        [
+          3.004730795772015e-09,
+          4.0802756139102225e-08
+        ]
+      ],
+      "all_passed": true
+    },
+    {
+      "case": "03_gaussian_pulse",
+      "title": "Gaussian pulse on the right",
+      "max_cross_solver_errors_um": [
+        [
+          2.748689676475985e-09,
+          1.2670073323839404e-07
+        ],
+        [
+          1.5658386588214557e-09,
+          1.3777173846207802e-08
+        ],
+        [
+          2.7583932859197302e-09,
+          1.2074716226884163e-07
+        ]
+      ],
+      "all_passed": true
+    },
+    {
+      "case": "04_sinusoidal",
+      "title": "Sinusoidal right source",
+      "max_cross_solver_errors_um": [
+        [
+          2.319921598575858e-09,
+          2.068015897416231e-07
+        ],
+        [
+          1.6658156516517753e-09,
+          1.0333400801698644e-07
+        ],
+        [
+          2.1795919561383437e-09,
+          2.886493127851608e-07
+        ]
+      ],
+      "all_passed": true
+    },
+    {
+      "case": "05_source_switch",
+      "title": "Smooth switch: left to right",
+      "max_cross_solver_errors_um": [
+        [
+          2.513512672736723e-09,
+          9.923312171977727e-08
+        ],
+        [
+          1.7079978924250394e-09,
+          1.0467321454044054e-08
+        ],
+        [
+          2.5526388186362936e-09,
+          9.997558336749535e-08
+        ]
+      ],
+      "all_passed": true
+    },
+    {
+      "case": "06_two_source_chirp",
+      "title": "Two-source chirp and cosine",
+      "max_cross_solver_errors_um": [
+        [
+          2.209028045121325e-09,
+          2.185066363957766e-07
+        ],
+        [
+          1.5240629938628736e-09,
+          1.549455008742484e-08
+        ],
+        [
+          2.7943413642012027e-09,
+          1.8514703659100462e-07
+        ]
+      ],
+      "all_passed": true
+    }
+  ],
+  "all_passed": true
+}
