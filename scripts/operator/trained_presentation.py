@@ -39,7 +39,8 @@ def relative_error_percent(prediction,numerical):
 def main():
     OUT.mkdir(parents=True,exist_ok=True);torch.set_num_threads(2);model=load(ROOT/'results/operator')
     sha=checksum();items=[]
-    reuse='--reuse-data' in sys.argv
+    five_only='--five-panels' in sys.argv
+    reuse='--reuse-data' in sys.argv or five_only
     saved=json.loads((OUT/'validation.json').read_text()) if reuse else None
     if reuse and (not saved['all_passed'] or saved['checkpoint_sha256']!=sha):
         raise RuntimeError('Cached results do not match the validated checkpoint')
@@ -90,9 +91,10 @@ def main():
                    max_relative_z_percent=float(relative[:,1].max()),
                    mean_relative_x_percent=float(relative[:,0].mean()),
                    mean_relative_z_percent=float(relative[:,1].mean()))
-        np.savetxt(OUT/(c['slug']+'_relative_error.csv'),
-           np.column_stack((t,relative,(abs(pred)+abs(truth))/2,abs(error))),delimiter=',',comments='',
-           header='time_s,symmetric_relative_x_percent,symmetric_relative_z_percent,mean_abs_x_m,mean_abs_z_m,absolute_x_error_um,absolute_z_error_um')
+        if not five_only:
+            np.savetxt(OUT/(c['slug']+'_relative_error.csv'),
+               np.column_stack((t,relative,(abs(pred)+abs(truth))/2,abs(error))),delimiter=',',comments='',
+               header='time_s,symmetric_relative_x_percent,symmetric_relative_z_percent,mean_abs_x_m,mean_abs_z_m,absolute_x_error_um,absolute_z_error_um')
     bmax=BS*.7071067812*1000
     def panel(ax,j,item,wide):
         c,t,a,pred,baseline,truth,error,row=item;p=c['parameters'];initial=np.array(c['initial'])
@@ -152,6 +154,25 @@ def main():
             ax.ticklabel_format(axis='y',style='plain',useOffset=False)
             ax.text(.04,.04,f'Max x: {row["max_relative_x_percent"]:.4g}%\nMax z: {row["max_relative_z_percent"]:.4g}%',transform=ax.transAxes,fontsize=8,bbox={'facecolor':'white','alpha':.9,'edgecolor':'#ddd'})
         ax.set_title(['01  Magnetic input','02  Space–time magnetic field','03  Trained-domain fluid flow','04  Network / numerical paths','05  Transverse response','06  Relative prediction error'][j],pad=10)
+    if five_only:
+        target=OUT/'trained_cases_panels_1_to_5.pdf'
+        with PdfPages(target) as pdf:
+            for item in items:
+                c=item[0];p=c['parameters'];initial=c['initial']
+                fig,axes=plt.subplots(1,5,figsize=(23,5.2))
+                fig.subplots_adjust(left=.045,right=.985,top=.78,bottom=.24,wspace=.50)
+                for j,ax in enumerate(axes):panel(ax,j,item,True)
+                fig.suptitle('TRAINED MASTER10  |  '+c['title'],fontsize=15,color='#064565',weight='bold',y=.98)
+                subtitle=f"{c['group']} case  ·  x₀={initial[0]*1e6:.2f} µm, z₀={initial[1]*1000:.1f} mm  ·  Umean={p.mean*1000:g} mm/s, η={p.eta*1000:.3f} mPa·s  ·  T={c['duration']:g} s"
+                fig.text(.5,.90,subtitle,ha='center',fontsize=10,color='#566576')
+                for left,right in zip(axes[:-1],axes[1:]):
+                    xpos=(left.get_position().x1+right.get_position().x0)/2
+                    fig.text(xpos,.82,'→',ha='center',color='#c08012',fontsize=19)
+                fig.text(.045,.05,'Magenta: trained network with B. Dark open circles: direct physical ODE (no neural model). Orange dashed: same release without B.',fontsize=9,color='#064565')
+                fig.text(.045,.012,'Original straight-channel geometry and overdamped equation. Spatial axes use different units. Validated trajectories unchanged.',fontsize=8,color='#566576')
+                pdf.savefig(fig);plt.close(fig)
+        print('SAVED',target,flush=True)
+        return
     with PdfPages(OUT/'trained_cases_slides.pdf') as pdf,PdfPages(OUT/'trained_cases_chains.pdf') as widepdf:
       for item in items:
         c,*_=item;p=c['parameters'];initial=c['initial']

@@ -4,6 +4,8 @@
 
 ## فایل‌های آمادهٔ ارائه
 
+- [PDF جداگانهٔ ۱۲ حالت، فقط نمودارهای ۱ تا ۵، بدون قاب خطا](trained_cases_panels_1_to_5.pdf)؛ نسخه‌های شامل خطا نیز حفظ شده‌اند.
+
 - [نسخهٔ نهایی: جریان در کل کانال و مسیرِ بزرگ‌نمایی‌شده بدون کالربار](07_offset_alternating_flow_and_paths.png) · [PDF همان دو قاب](07_offset_alternating_flow_and_paths.pdf)
 - [نمودار مستقل مسیر، بدون نقشهٔ سرعت و کالربار، برای نمونهٔ پیوست‌شده](11_downstream_switch_paths_no_colorbar.png)
 
@@ -84,6 +86,12 @@ python scripts/operator/trained_presentation.py
 
 ```bash
 python scripts/operator/trained_presentation.py --reuse-data
+```
+
+برای ساخت فقط PDF جداگانهٔ نمودارهای ۱ تا ۵، از همان داده‌های اعتبارسنجی‌شده و بدون تغییر فایل‌های قبلی:
+
+```bash
+python scripts/operator/trained_presentation.py --five-panels
 ```
 
 نسخهٔ نهاییِ نمایش کل کانال در قاب جریان و مسیرِ زوم‌شدهٔ بدون کالربار با همین گزینه ساخته شده است؛ فایل‌های مسیر و خطا و وزن‌ها تغییر نکرده‌اند.
