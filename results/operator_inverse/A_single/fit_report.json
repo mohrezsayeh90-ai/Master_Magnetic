@@ -1,0 +1,155 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 3,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "left-positive"
+  },
+  "selected_start": 1,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 0.15266044890756542,
+      "data_term": 0.14132831969388604,
+      "regularization_term": 0.011332129213679376,
+      "domain_penalty": 0.0,
+      "iterations": 47,
+      "evaluations": 52,
+      "optimizer_converged": true,
+      "reason": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 19.83427841899993,
+      "coefficients": [
+        [
+          0.12293187001854822,
+          0.0
+        ],
+        [
+          0.18073420473507198,
+          0.0
+        ],
+        [
+          0.28033439588422715,
+          0.0
+        ],
+        [
+          0.3200872604790618,
+          0.0
+        ],
+        [
+          0.2500028906345434,
+          0.0
+        ],
+        [
+          0.17958569994780557,
+          0.0
+        ],
+        [
+          0.11943318400409585,
+          0.0
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 0.15266044890100225,
+      "data_term": 0.14132831931621517,
+      "regularization_term": 0.011332129584787076,
+      "domain_penalty": 0.0,
+      "iterations": 48,
+      "evaluations": 96,
+      "optimizer_converged": false,
+      "reason": "ABNORMAL: ",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 37.23582312800045,
+      "coefficients": [
+        [
+          0.12293186858614724,
+          0.0
+        ],
+        [
+          0.1807342056377005,
+          0.0
+        ],
+        [
+          0.28033439221691087,
+          0.0
+        ],
+        [
+          0.32008726367851775,
+          0.0
+        ],
+        [
+          0.2500028885457715,
+          0.0
+        ],
+        [
+          0.17958570264043094,
+          0.0
+        ],
+        [
+          0.11943317876391378,
+          0.0
+        ]
+      ]
+    },
+    {
+      "start": 2,
+      "objective": 0.15266044890814923,
+      "data_term": 0.14132832005477694,
+      "regularization_term": 0.01133212885337229,
+      "domain_penalty": 0.0,
+      "iterations": 41,
+      "evaluations": 47,
+      "optimizer_converged": true,
+      "reason": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 19.483668578000106,
+      "coefficients": [
+        [
+          0.1229318619759785,
+          0.0
+        ],
+        [
+          0.18073421198813827,
+          0.0
+        ],
+        [
+          0.28033438884397577,
+          0.0
+        ],
+        [
+          0.32008726334141346,
+          0.0
+        ],
+        [
+          0.2500028899524288,
+          0.0
+        ],
+        [
+          0.1795857034832088,
+          0.0
+        ],
+        [
+          0.11943319179490242,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "seconds": 76.55406100799974,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately"
+}

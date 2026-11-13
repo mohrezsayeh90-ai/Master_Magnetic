@@ -1,0 +1,26 @@
+{
+  "status": "completed",
+  "case": "E_gap_sign",
+  "replay_difference": {
+    "rmse": [
+      0.0,
+      0.0
+    ],
+    "maximum": [
+      0.0,
+      0.0
+    ]
+  },
+  "reference_refinement": {
+    "rmse": [
+      2.1182387788328213e-11,
+      7.58653734542664e-13
+    ],
+    "maximum": [
+      1.2383254144321398e-10,
+      1.5037970868547745e-12
+    ]
+  },
+  "global_aligned_waveform_relative_l2": 1.35693398559762,
+  "meaning": "Physical piecewise sign ambiguity across a common zero interval; not a surrogate-based identifiability claim"
+}

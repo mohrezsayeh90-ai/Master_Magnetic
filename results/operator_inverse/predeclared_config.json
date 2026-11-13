@@ -1,0 +1,40 @@
+{
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133",
+  "iterations": 90,
+  "cases": [
+    "A_single",
+    "B_signed",
+    "B_knots13",
+    "B_window_half",
+    "B_weights",
+    "B_lambda",
+    "C_switch",
+    "D_sparse",
+    "D_noise_0.05_1103",
+    "D_noise_0.05_2907",
+    "D_noise_0.2_1103",
+    "D_noise_0.2_2907",
+    "E_gap_sign"
+  ],
+  "floor_scales": [
+    5.5e-05,
+    4e-05
+  ],
+  "floor_basis": "Rounded-up maxima of the archived 12-case forward discrepancies (5.349e-5 X,3.257e-5 Z); fixed before target fitting",
+  "design": "A development sanity check; B/C evaluation; D noise seeds fixed; no inverse numerical pass gate",
+  "objective": "mean(sum(((q-q_obs)/max(noise_sigma,forward_floor))^2))+lambda*sum(||a[j+1]-a[j]||^2/dt)",
+  "physical_model": "Original frozen straight-tube Master10",
+  "default_config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 3,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "signed"
+  }
+}

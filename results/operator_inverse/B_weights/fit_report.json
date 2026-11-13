@@ -1,0 +1,111 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      8e-05
+    ],
+    "regularization": 0.1,
+    "starts": 2,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "signed"
+  },
+  "selected_start": 0,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 7.666464653151846,
+      "data_term": 7.328163317503624,
+      "regularization_term": 0.338301335648222,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 104,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 9.71445146547012e-17,
+      "seconds": 35.883711677000065,
+      "coefficients": [
+        [
+          0.06697113085604145,
+          -0.45739058487400963
+        ],
+        [
+          -0.03906001675125785,
+          0.27456212751648024
+        ],
+        [
+          -0.1866085034408978,
+          -0.037812395949999564
+        ],
+        [
+          -0.2899794658396646,
+          0.022364420578597582
+        ],
+        [
+          -0.18678319965765505,
+          -0.07358640713844795
+        ],
+        [
+          0.05624928318243227,
+          0.1682431361633339
+        ],
+        [
+          -0.05585414995442961,
+          0.2912522073257119
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 245.94157931688028,
+      "data_term": 245.41519640643673,
+      "regularization_term": 0.5263829104435355,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 98,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 1.1102230246251565e-16,
+      "seconds": 34.58688460400026,
+      "coefficients": [
+        [
+          0.14234726072306747,
+          0.2940230585257964
+        ],
+        [
+          0.32565617830544996,
+          0.3814506028810976
+        ],
+        [
+          0.0979780496629655,
+          -0.008550396831369274
+        ],
+        [
+          0.3877840800043552,
+          0.05382123689065871
+        ],
+        [
+          -0.30771771783663693,
+          -0.0434715360418772
+        ],
+        [
+          0.2390086022904591,
+          0.25161321906502127
+        ],
+        [
+          -0.08294080987318493,
+          0.2600355170694197
+        ]
+      ]
+    }
+  ],
+  "seconds": 70.47075523500007,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately"
+}

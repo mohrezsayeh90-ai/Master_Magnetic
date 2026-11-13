@@ -1,0 +1,10 @@
+test_inputs_and_units (test_inverse.InverseChecks.test_inputs_and_units) ... ok
+test_parity_and_partial (test_inverse.InverseChecks.test_parity_and_partial) ... ok
+test_physical_sign (test_inverse.InverseChecks.test_physical_sign) ... ok
+test_propagated_gradient (test_inverse.InverseChecks.test_propagated_gradient) ... ok
+test_zero_exit_and_bounds (test_inverse.InverseChecks.test_zero_exit_and_bounds) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.218s
+
+OK

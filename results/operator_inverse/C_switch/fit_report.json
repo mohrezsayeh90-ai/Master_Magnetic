@@ -1,0 +1,155 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 3,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "signed"
+  },
+  "selected_start": 0,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 49.60112823773175,
+      "data_term": 48.86954333534687,
+      "regularization_term": 0.7315849023848806,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 112,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 2.220446049250313e-16,
+      "seconds": 61.732576845999574,
+      "coefficients": [
+        [
+          0.4224491722827779,
+          0.2576755770235638
+        ],
+        [
+          0.7071067811865476,
+          0.0
+        ],
+        [
+          -0.7012147252254176,
+          -0.0034058370342207045
+        ],
+        [
+          -0.3208545282753752,
+          0.3862522529111724
+        ],
+        [
+          0.17311446346747686,
+          0.5339923177190707
+        ],
+        [
+          0.07582042129408473,
+          0.500660196921871
+        ],
+        [
+          -0.12340900258456255,
+          0.5057923698281523
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 50.77401611605433,
+      "data_term": 50.05860065319435,
+      "regularization_term": 0.7154154628599811,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 110,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 2.220446049250313e-16,
+      "seconds": 67.5063051850002,
+      "coefficients": [
+        [
+          -0.39096847454848893,
+          0.05155785782933986
+        ],
+        [
+          -0.7071067811865476,
+          0.0
+        ],
+        [
+          0.6934686326344571,
+          -0.013638148552090446
+        ],
+        [
+          0.3226832999249612,
+          0.3844234812615864
+        ],
+        [
+          -0.17266636866436805,
+          0.5344404125221796
+        ],
+        [
+          -0.07539997414715915,
+          0.5002179361990579
+        ],
+        [
+          0.13417045249892,
+          0.506997624222265
+        ]
+      ]
+    },
+    {
+      "start": 2,
+      "objective": 49.981585680307404,
+      "data_term": 49.39433025296916,
+      "regularization_term": 0.5872554273382442,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 98,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 2.220446049250313e-16,
+      "seconds": 57.502585113999885,
+      "coefficients": [
+        [
+          -0.7071067811865476,
+          0.0
+        ],
+        [
+          0.5455594919640137,
+          -0.011140881693778859
+        ],
+        [
+          0.5884110232295652,
+          0.11869575795698245
+        ],
+        [
+          0.32855925811020376,
+          -0.3785475230763438
+        ],
+        [
+          -0.17130236854400596,
+          -0.5358044126425416
+        ],
+        [
+          -0.12362055089690971,
+          -0.5113191414060456
+        ],
+        [
+          0.023836624012827767,
+          -0.49598171994413914
+        ]
+      ]
+    }
+  ],
+  "seconds": 186.74170577899986,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately"
+}

@@ -1,0 +1,327 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 3,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "signed"
+  },
+  "selected_start": 0,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 7.659089039505559,
+      "data_term": 7.2936724076773,
+      "regularization_term": 0.3654166318282588,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 107,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 8.326672684688674e-17,
+      "seconds": 39.393575402999886,
+      "coefficients": [
+        [
+          0.07827618864312189,
+          -0.46041506512334296
+        ],
+        [
+          -0.04043861582357729,
+          0.28649993648023564
+        ],
+        [
+          -0.18878508819352,
+          -0.08662714558901749
+        ],
+        [
+          -0.2935934297267154,
+          0.059921196310757846
+        ],
+        [
+          -0.1801974015225299,
+          -0.0592724746150931
+        ],
+        [
+          0.033029990441197005,
+          0.1653993378332422
+        ],
+        [
+          -0.05962641668938762,
+          0.29299365889764856
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 246.12330012627837,
+      "data_term": 245.61205903569171,
+      "regularization_term": 0.5112410905866591,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 100,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 40.07565838999926,
+      "coefficients": [
+        [
+          0.10214666559021222,
+          0.2703600110445508
+        ],
+        [
+          0.3247586304172747,
+          0.3817721375568075
+        ],
+        [
+          0.09789593554620099,
+          -0.015410098200879262
+        ],
+        [
+          0.3844200313694931,
+          0.009568722264407387
+        ],
+        [
+          -0.3050256289025822,
+          -0.007336428857566218
+        ],
+        [
+          0.21407462848768316,
+          0.22515036330345822
+        ],
+        [
+          -0.13633685779441157,
+          0.27278511837601255
+        ]
+      ]
+    },
+    {
+      "start": 2,
+      "objective": 66.33120137984812,
+      "data_term": 65.98671343341863,
+      "regularization_term": 0.34448794642949637,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 107,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 37.578809210000145,
+      "coefficients": [
+        [
+          0.04387047639746659,
+          0.2725832416890259
+        ],
+        [
+          -0.0948498222158885,
+          0.2121451710245565
+        ],
+        [
+          -0.20522395705464913,
+          0.09751280183579931
+        ],
+        [
+          -0.2870652843126843,
+          0.0026633796569045243
+        ],
+        [
+          -0.21067654229562108,
+          0.1427476037329958
+        ],
+        [
+          0.015204701260662715,
+          -0.25393290756415776
+        ],
+        [
+          -0.03219222045658138,
+          0.4952154601406212
+        ]
+      ]
+    }
+  ],
+  "seconds": 117.04827770799966,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately",
+  "case": "B_signed",
+  "parameters": {
+    "eta": 0.003276913272013514,
+    "mean": 0.015,
+    "rho": 1000.0
+  },
+  "q0": [
+    0.12,
+    -1
+  ],
+  "observation_count": 121,
+  "noise_um": 0,
+  "noise_seed": 0,
+  "source": "DOP853 synthetic; truth amplitudes never supplied to fit",
+  "evaluation_count": 601,
+  "sign": -1,
+  "waveform_raw_relative_l2": 1.3492734532697,
+  "waveform_aligned_relative_l2": 1.046502274099294,
+  "waveform_raw": {
+    "rmse": [
+      0.36971056214584896,
+      0.22648994239259743
+    ],
+    "maximum": [
+      0.6135934297267154,
+      0.760415065123343
+    ]
+  },
+  "waveform_aligned": {
+    "rmse": [
+      0.12200499101500767,
+      0.3133665115412209
+    ],
+    "maximum": [
+      0.213029990441197,
+      0.6029936588976486
+    ]
+  },
+  "neural_vs_clean": {
+    "rmse": [
+      0.0001475549141689601,
+      1.5220292978015681e-05
+    ],
+    "maximum": [
+      0.0004623616910969103,
+      2.880889215447352e-05
+    ]
+  },
+  "replay_vs_clean": {
+    "rmse": [
+      0.00015021003516829779,
+      1.777364268442004e-05
+    ],
+    "maximum": [
+      0.0004659176432375567,
+      3.251221942485692e-05
+    ]
+  },
+  "neural_vs_observed": {
+    "rmse": [
+      0.00014706656417258062,
+      1.5164721752235047e-05
+    ],
+    "maximum": [
+      0.00046042638032289807,
+      2.8746134489152086e-05
+    ]
+  },
+  "zero_vs_clean": {
+    "rmse": [
+      0.011648697969725176,
+      0.0010142277212372502
+    ],
+    "maximum": [
+      0.019913592824600326,
+      0.0025372657044582803
+    ]
+  },
+  "reference_refinement": {
+    "rmse": [
+      2.7519730640003625e-10,
+      4.3111402919884775e-11
+    ],
+    "maximum": [
+      3.8269259983181314e-10,
+      8.050360378319965e-11
+    ]
+  },
+  "replay_refinement": {
+    "rmse": [
+      1.6592012959005908e-10,
+      2.503489531563046e-11
+    ],
+    "maximum": [
+      2.642839280753151e-10,
+      4.75880446160204e-11
+    ]
+  },
+  "field_aligned_at_reference": {
+    "rmse": [
+      0.1263160776212507,
+      0.22560715853534807,
+      0.007455331524829885,
+      0.08518423005421069
+    ],
+    "maximum": [
+      0.27559451987829353,
+      0.42102485570341386,
+      0.032576512378584124,
+      0.18876362146126788
+    ]
+  },
+  "field_scales": "B/BS, F/(ALPHA*BS^2/D); evaluated at q_ref(tau)",
+  "independent_replay_complete": true,
+  "domain_feasible": true,
+  "amplitude_margin": 0.1684155274200827,
+  "state_X_margin": 0.5770423887520042,
+  "near_best_replays": [
+    {
+      "start": 0,
+      "replay": {
+        "rmse": [
+          0.00015021003516829779,
+          1.777364268442004e-05
+        ],
+        "maximum": [
+          0.0004659176432375567,
+          3.251221942485692e-05
+        ]
+      },
+      "completed": true,
+      "waveform_global_aligned_relative_l2": 1.046502274099294,
+      "objective": 7.659089039505559
+    },
+    {
+      "start": 1,
+      "replay": {
+        "rmse": [
+          0.0008630681477899941,
+          3.724439615396221e-05
+        ],
+        "maximum": [
+          0.0025984747736453456,
+          8.755462461457197e-05
+        ]
+      },
+      "completed": true,
+      "waveform_global_aligned_relative_l2": 0.7137389444125668,
+      "objective": 246.12330012627837
+    },
+    {
+      "start": 2,
+      "replay": {
+        "rmse": [
+          0.0004387859366615728,
+          2.562982256099425e-05
+        ],
+        "maximum": [
+          0.001486375917792257,
+          4.821384485009794e-05
+        ]
+      },
+      "completed": true,
+      "waveform_global_aligned_relative_l2": 1.1666525967872372,
+      "objective": 66.33120137984812
+    }
+  ],
+  "total_seconds": 120.74449646599987,
+  "error_definition": "Component RMSE and max on stated grid; waveform relative norm is joint across sources/time; no per-coordinate relative position errors",
+  "status": "completed",
+  "assessment": "No numeric inverse pass gate; optimizer convergence, replay error, and waveform error reported separately",
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133"
+}

@@ -1,0 +1,9 @@
+{
+  "float64_gradient_seconds": 0.33614933700027905,
+  "surrogate_global_sign_maximum_difference": [
+    1.1286702353605071e-05,
+    8.055775948923038e-06
+  ],
+  "interpretation": "Any surrogate sign preference is numerical model discrepancy, not physical identifiability",
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133"
+}

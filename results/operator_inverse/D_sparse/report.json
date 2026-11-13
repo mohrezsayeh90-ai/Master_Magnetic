@@ -1,0 +1,267 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 7,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 2,
+    "iterations": 90,
+    "seed": 731,
+    "prior": "signed"
+  },
+  "selected_start": 0,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 7.30393324742816,
+      "data_term": 6.936702370741594,
+      "regularization_term": 0.36723087668656623,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 102,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 8.326672684688674e-17,
+      "seconds": 36.88005046299986,
+      "coefficients": [
+        [
+          0.043585875319173295,
+          -0.4552655614168076
+        ],
+        [
+          -0.01673637201878206,
+          0.2833970987078406
+        ],
+        [
+          -0.19479403958396646,
+          -0.09644879355158088
+        ],
+        [
+          -0.29014291696853445,
+          0.04203095304846702
+        ],
+        [
+          -0.18485961729808223,
+          -0.06911281954274592
+        ],
+        [
+          0.05016548841548455,
+          0.16656919439229512
+        ],
+        [
+          -0.06881161780222225,
+          0.29378764455058315
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 237.72214635581577,
+      "data_term": 237.20790786389557,
+      "regularization_term": 0.514238491920186,
+      "domain_penalty": 0.0,
+      "iterations": 90,
+      "evaluations": 102,
+      "optimizer_converged": false,
+      "reason": "STOP: TOTAL NO. OF ITERATIONS REACHED LIMIT",
+      "feasible": true,
+      "sampling_error": 5.551115123125783e-17,
+      "seconds": 43.063518353999825,
+      "coefficients": [
+        [
+          0.08490868746262975,
+          0.26120559506856517
+        ],
+        [
+          0.32546429684375716,
+          0.3816424843427904
+        ],
+        [
+          0.0973867507269501,
+          -0.014034207131201147
+        ],
+        [
+          0.38507999977093743,
+          0.022538756958901646
+        ],
+        [
+          -0.3059872202771215,
+          -0.01833748793271517
+        ],
+        [
+          0.22218797877616578,
+          0.23517439999860998
+        ],
+        [
+          -0.08896493598350115,
+          0.2704101947120061
+        ]
+      ]
+    }
+  ],
+  "seconds": 79.94373235900002,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately",
+  "case": "D_sparse",
+  "parameters": {
+    "eta": 0.003276913272013514,
+    "mean": 0.015,
+    "rho": 1000.0
+  },
+  "q0": [
+    0.12,
+    -1
+  ],
+  "observation_count": 31,
+  "noise_um": 0,
+  "noise_seed": 0,
+  "source": "DOP853 synthetic; truth amplitudes never supplied to fit",
+  "evaluation_count": 601,
+  "sign": -1,
+  "waveform_raw_relative_l2": 1.3519893172927129,
+  "waveform_aligned_relative_l2": 1.039090255978453,
+  "waveform_raw": {
+    "rmse": [
+      0.36820649043188713,
+      0.23057557432584747
+    ],
+    "maximum": [
+      0.6101429169685344,
+      0.7552655614168076
+    ]
+  },
+  "waveform_aligned": {
+    "rmse": [
+      0.12475592723782018,
+      0.30971527579500985
+    ],
+    "maximum": [
+      0.23016548841548454,
+      0.6037876445505832
+    ]
+  },
+  "neural_vs_clean": {
+    "rmse": [
+      0.00014702209116307803,
+      1.2755918777406355e-05
+    ],
+    "maximum": [
+      0.00046180193327936825,
+      2.3630117877336543e-05
+    ]
+  },
+  "replay_vs_clean": {
+    "rmse": [
+      0.0001497469712771222,
+      1.5188021749949412e-05
+    ],
+    "maximum": [
+      0.0004636470836625328,
+      2.7596802834180603e-05
+    ]
+  },
+  "neural_vs_observed": {
+    "rmse": [
+      0.00014381528412641604,
+      1.261118429251047e-05
+    ],
+    "maximum": [
+      0.00043298033082289633,
+      2.3470981569861243e-05
+    ]
+  },
+  "zero_vs_clean": {
+    "rmse": [
+      0.011648697969725176,
+      0.0010142277212372502
+    ],
+    "maximum": [
+      0.019913592824600326,
+      0.0025372657044582803
+    ]
+  },
+  "reference_refinement": {
+    "rmse": [
+      2.7519730640003625e-10,
+      4.3111402919884775e-11
+    ],
+    "maximum": [
+      3.8269259983181314e-10,
+      8.050360378319965e-11
+    ]
+  },
+  "replay_refinement": {
+    "rmse": [
+      3.482548945053154e-10,
+      5.153395353532878e-11
+    ],
+    "maximum": [
+      4.780441320573203e-10,
+      9.551470725455147e-11
+    ]
+  },
+  "field_aligned_at_reference": {
+    "rmse": [
+      0.12104284440394028,
+      0.22652316083006996,
+      0.007403244474683944,
+      0.07975696306540368
+    ],
+    "maximum": [
+      0.2802600591340198,
+      0.4333177228605412,
+      0.03245353941182194,
+      0.16959663758977456
+    ]
+  },
+  "field_scales": "B/BS, F/(ALPHA*BS^2/D); evaluated at q_ref(tau)",
+  "independent_replay_complete": true,
+  "domain_feasible": true,
+  "amplitude_margin": 0.2082553444505667,
+  "state_X_margin": 0.5770372226926004,
+  "near_best_replays": [
+    {
+      "start": 0,
+      "replay": {
+        "rmse": [
+          0.0001497469712771222,
+          1.5188021749949412e-05
+        ],
+        "maximum": [
+          0.0004636470836625328,
+          2.7596802834180603e-05
+        ]
+      },
+      "completed": true,
+      "waveform_global_aligned_relative_l2": 1.039090255978453,
+      "objective": 7.30393324742816
+    },
+    {
+      "start": 1,
+      "replay": {
+        "rmse": [
+          0.0008633451115008999,
+          3.593854271757921e-05
+        ],
+        "maximum": [
+          0.0025983812223356884,
+          8.498637834045142e-05
+        ]
+      },
+      "completed": true,
+      "waveform_global_aligned_relative_l2": 0.7019722731863752,
+      "objective": 237.72214635581577
+    }
+  ],
+  "total_seconds": 83.57551008300015,
+  "error_definition": "Component RMSE and max on stated grid; waveform relative norm is joint across sources/time; no per-coordinate relative position errors",
+  "status": "completed",
+  "assessment": "No numeric inverse pass gate; optimizer convergence, replay error, and waveform error reported separately",
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133"
+}

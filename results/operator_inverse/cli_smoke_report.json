@@ -1,0 +1,96 @@
+{
+  "config": {
+    "h": 0.0125,
+    "knots": 3,
+    "scales": [
+      5.5e-05,
+      4e-05
+    ],
+    "regularization": 0.1,
+    "starts": 2,
+    "iterations": 30,
+    "seed": 731,
+    "prior": "left-positive"
+  },
+  "selected_start": 0,
+  "starts": [
+    {
+      "start": 0,
+      "objective": 0.0,
+      "data_term": 0.0,
+      "regularization_term": 0.0,
+      "domain_penalty": 0.0,
+      "iterations": 1,
+      "evaluations": 2,
+      "optimizer_converged": true,
+      "reason": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "feasible": true,
+      "sampling_error": 0.0,
+      "seconds": 0.13213410099979228,
+      "coefficients": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    {
+      "start": 1,
+      "objective": 0.0,
+      "data_term": 0.0,
+      "regularization_term": 0.0,
+      "domain_penalty": 0.0,
+      "iterations": 1,
+      "evaluations": 2,
+      "optimizer_converged": true,
+      "reason": "CONVERGENCE: NORM OF PROJECTED GRADIENT <= PGTOL",
+      "feasible": true,
+      "sampling_error": 0.0,
+      "seconds": 0.03618390700012242,
+      "coefficients": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    }
+  ],
+  "seconds": 0.16844217299967568,
+  "initial_convention": "exact_first_observation",
+  "time_origin": 0,
+  "units": "tau,X,Z",
+  "rejection_rule": "Require domain-feasible sampled rollout, amplitude bound, sampling error <=0.0005; independent replay required separately",
+  "checkpoint_sha256": "080b7e5dd76c98a75fca7f92cc4ec314907a7f7340c809b739b1e2eabc0e3133",
+  "parameters": {
+    "eta": 0.003276913272013514,
+    "mean": 0.015,
+    "rho": 1000
+  },
+  "replay_maximum_observed": [
+    0.0,
+    3.3306690738754696e-16
+  ],
+  "reference_refinement": [
+    0.0,
+    3.6637359812630166e-15
+  ],
+  "independent_replay_complete": true,
+  "reference_waveform_available": false,
+  "sign_alignment": "Unavailable for measured data; preserve raw coefficients"
+}
